@@ -38,16 +38,16 @@ This project demonstrates a daily ETL pipeline using Apache Airflow to load orde
 
 ## 📁 Project Structure
 .
-├── dags/
-│   └── dag_with_validation.py         # Main DAG with validation and load
-├── data/                              # Example input files
-│   └── orders_20250725.csv            
-│   └── orders_20250726.csv            
-│   └── orders_20250727.csv            
-├── docker-compose.yml                 # Containerized Airflow 
-├── sql                        
-│   └── snoflake.sql                   # SQL scrips for snowflake configuration
-│   └── scrips.sql                     # SQL scrips for analytics and reporting
+├── dags/<br>
+│   └── dag_with_validation.py         # Main DAG with validation and load<br>
+├── data/<br>                              # Example input files<br>
+│   └── orders_20250725.csv <br>            
+│   └── orders_20250726.csv <br>           
+│   └── orders_20250727.csv <br>           
+├── docker-compose.yml                 # Containerized Airflow <br> 
+├── sql <br>                       
+│   └── snoflake.sql                   # SQL scrips for snowflake configuration <br>
+│   └── scrips.sql                     # SQL scrips for analytics and reporting <br>
 └── README.md
 
 ---
@@ -59,7 +59,8 @@ Upload CSV files into the corresponding folders:
 ```
 s3://sales-data-2016-2018/orders/orders_20250725.csv  
 s3://sales-data-2016-2018/orders/order_items_20250725.csv
-s3://sales-data-2016-2018/orders/customers_20250725.csv, etc.
+s3://sales-data-2016-2018/orders/customers_20250725.csv
+... etc.
 ```
 2. IAM Role Setup (for Snowflake to access S3)
 2.1 Create IAM Policy
@@ -142,22 +143,22 @@ Go to Trust relationships → Edit trust policy, and update:
 }
 ```
 ## ❄️ Snowflake Configuration
- • A dedicated database (SALES_DATA) and schema (SALES_DATA_SCHEMA) were created to store and organize incoming data.
- • A storage integration (aws_s3_integration) was set up to securely connect Snowflake with AWS S3 using an IAM role. This allows Snowflake to directly query and load data from the S3 bucket (s3://sales-data-2016-2018/).
- • A custom file format was defined for CSV ingestion, handling delimiters, header rows, and timestamps.
- • An external stage (aws_stage) was created to reference the S3 location, making it easy to browse, load, and remove files from Snowflake.
- • Usage and access grants were applied to ensure the proper Snowflake roles could interact with the stage and integration.
- • Tables such as customers, orders, and others were defined and populated using the COPY INTO command directly from the external stage.
- • Snowflake’s analytics layer included:
- • Creation of views for aggregated and cleaned data.
- • Revenue breakdown by payment type.
- • Performance by state, including metrics like average order value and freight costs.
+ • A dedicated database (SALES_DATA) and schema (SALES_DATA_SCHEMA) were created to store and organize incoming data.<br>
+ • A storage integration (aws_s3_integration) was set up to securely connect Snowflake with AWS S3 using an IAM role. This allows Snowflake to directly query and load data from the S3 bucket (s3://sales-data-2016-2018/).<br>
+ • A custom file format was defined for CSV ingestion, handling delimiters, header rows, and timestamps.<br>
+ • An external stage (aws_stage) was created to reference the S3 location, making it easy to browse, load, and remove files from Snowflake.<br>
+ • Usage and access grants were applied to ensure the proper Snowflake roles could interact with the stage and integration.<br>
+ • Tables such as customers, orders, and others were defined and populated using the COPY INTO command directly from the external stage.<br>
+ • Snowflake’s analytics layer included:<br>
+ • Creation of views for aggregated and cleaned data.<br>
+ • Revenue breakdown by payment type.<br>
+ • Performance by state, including metrics like average order value and freight costs.<br>
  • Monthly sales trends for time-series insights.
 
 ## 🔄 Airflow Configuration (Dockerized)
- • Airflow is containerized using docker-compose for local orchestration and scheduling.
- • Airflow metadata and logs are persisted via Docker volumes for durability across restarts.
- • Credentials and endpoints for Snowflake and AWS S3 are securely managed via Airflow Connections, created through the Airflow UI.
+ • Airflow is containerized using docker-compose for local orchestration and scheduling.<br>
+ • Airflow metadata and logs are persisted via Docker volumes for durability across restarts.<br>
+ • Credentials and endpoints for Snowflake and AWS S3 are securely managed via Airflow Connections, created through the Airflow UI.<br>
  • Core services (e.g. webserver, scheduler, triggerer, and postgres) are defined in docker-compose.
 
 ## 🧪 Testing
