@@ -38,16 +38,16 @@ This project demonstrates a daily ETL pipeline using Apache Airflow to load orde
 
 ## 📁 Project Structure
 .
-├── dags/<br>
-│   └── dag_with_validation.py         # Main DAG with validation and load<br>
-├── data/<br>                              # Example input files<br>
-│   └── orders_20250725.csv <br>            
-│   └── orders_20250726.csv <br>           
-│   └── orders_20250727.csv <br>           
-├── docker-compose.yml                 # Containerized Airflow <br> 
-├── sql <br>                       
-│   └── snoflake.sql                   # SQL scrips for snowflake configuration <br>
-│   └── scrips.sql                     # SQL scrips for analytics and reporting <br>
+├── dags/
+│   └── dag_with_validation.py       # Main DAG with validation and load
+├── data/                            # Example input files
+│   ├── orders_20250725.csv
+│   ├── orders_20250726.csv
+│   └── orders_20250727.csv
+├── docker-compose.yml               # Containerized Airflow setup
+├── sql/
+│   ├── snowflake.sql                # SQL scripts for Snowflake configuration
+│   └── scripts.sql                  # SQL scripts for analytics and reporting
 └── README.md
 
 ---
