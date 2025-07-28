@@ -37,7 +37,7 @@ This project demonstrates a daily ETL pipeline using Apache Airflow to load orde
 ---
 
 ## 📁 Project Structure
-.
+```
 ├── dags/
 │   └── dag_with_validation.py       # Main DAG with validation and load
 ├── data/                            # Example input files
@@ -49,7 +49,7 @@ This project demonstrates a daily ETL pipeline using Apache Airflow to load orde
 │   ├── snowflake.sql                # SQL scripts for Snowflake configuration
 │   └── scripts.sql                  # SQL scripts for analytics and reporting
 └── README.md
-
+```
 ---
 ## 🔧 AWS Configuration (S3 + IAM Role for Snowflake Integration)
 1. S3 Bucket Setup
